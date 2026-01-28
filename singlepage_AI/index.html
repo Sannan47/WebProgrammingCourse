@@ -21,11 +21,76 @@
             font-family: "Poppins", system-ui, sans-serif;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             background: linear-gradient(180deg, var(--bg-dark), var(--bg-light));
             color: var(--text-main);
             line-height: 1.6;
         }
+
+        /* ================= NAVBAR ================= */
+
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(15, 15, 20, 0.75);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 16px 8%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -6px;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* ================= SECTIONS ================= */
 
         section {
             padding: 80px 8%;
@@ -59,6 +124,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            background: #111;
             transition: transform 0.6s ease;
         }
 
@@ -92,7 +158,7 @@
             color: var(--text-muted);
         }
 
-        .about p span {
+        .about span {
             color: var(--accent);
             font-weight: 500;
         }
@@ -151,7 +217,7 @@
             box-shadow: 0 10px 30px rgba(255, 122, 122, 0.35);
         }
 
-        /* ================= FOOTER TOUCH ================= */
+        /* ================= FOOTER ================= */
 
         footer {
             text-align: center;
@@ -176,13 +242,29 @@
             .gallery-grid {
                 grid-template-columns: 1fr;
             }
+
+            .nav-links {
+                gap: 18px;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- GALLERY SECTION -->
-    <section>
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">Artful</div>
+            <ul class="nav-links">
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#feedback">Feedback</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- GALLERY -->
+    <section id="gallery">
         <h2>Art Gallery</h2>
         <div class="gallery-grid">
             <div class="gallery-item"><img src="https://picsum.photos/600?random=1"></div>
@@ -197,38 +279,38 @@
         </div>
     </section>
 
-    <!-- ABOUT SECTION -->
-    <section>
+    <!-- ABOUT -->
+    <section id="about">
         <h2>About This Space</h2>
         <div class="about">
             <p>
-                Art is not just something we <span>see</span> — it is something we feel, interpret, and quietly carry with us.
-                This space exists to celebrate creativity in its many forms, from soft colors to bold ideas.
-                Every piece tells a story, even when it remains silent.
-                Here, we invite you to pause, breathe, and let imagination do the talking.
+                Art is not something we simply <span>look at</span> — it’s something we experience.
+                This gallery exists to celebrate creativity, quiet moments, and bold expression.
+                Every image carries a feeling, every color a story.
+                Stay curious. Stay inspired.
             </p>
         </div>
     </section>
 
-    <!-- FEEDBACK SECTION -->
-    <section>
+    <!-- FEEDBACK -->
+    <section id="feedback">
         <h2>Leave Your Feedback</h2>
         <form class="feedback-form">
-            <label for="name">Your Name</label>
-            <input type="text" id="name" placeholder="Enter your name">
+            <label>Your Name</label>
+            <input type="text" placeholder="Enter your name">
 
-            <label for="email">Email Address</label>
-            <input type="email" id="email" placeholder="Enter your email">
+            <label>Email Address</label>
+            <input type="email" placeholder="Enter your email">
 
-            <label for="message">Your Message</label>
-            <textarea id="message" placeholder="Share your thoughts..."></textarea>
+            <label>Your Message</label>
+            <textarea placeholder="Share your thoughts..."></textarea>
 
             <button type="submit">Send Feedback</button>
         </form>
     </section>
 
     <footer>
-        © 2026 • Crafted with HTML & CSS only
+        © 2026 • Built with pure HTML & CSS
     </footer>
 
 </body>
