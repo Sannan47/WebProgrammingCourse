@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Archery Game</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <div id="game-info">
+            <div id="score">0</div>
+            <div id="timer">00:30</div>
+            <div id="arrows">11</div>
+        </div>
+        
+        <div id="game-area">
+            <img id="bow" src="archery.png" alt="bow">
+            <div id="target"></div>
+        </div>
+        
+        <div id="game-over" class="hidden">
+            <h2>Game Over!</h2>
+            <p>Final Score: <span id="final-score">0</span></p>
+            <button id="restart-btn">Play Again</button>
+        </div>
+        
+        <script src="bob.js"></script>
+    </body>
+</html>

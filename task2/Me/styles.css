@@ -1,0 +1,123 @@
+body {
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #87CEEB 0%, #87CEEB 60%, #90EE90 60%, #90EE90 80%, #8B4513 80%);
+}
+
+#game-info {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 40px;
+    font-size: 32px;
+    font-weight: bold;
+    color: #333;
+    background: rgba(255, 255, 255, 0.5);
+    z-index: 100;
+}
+
+#score::before {
+    content: '🎯 ';
+}
+
+#timer {
+    font-size: 32px;
+}
+
+#arrows::before {
+    content: '🏹 ';
+}
+
+#game-area {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+#bow {
+    width: 100px;
+    height: auto;
+    position: absolute;
+    left: 50px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+#target {
+    width: 100px;
+    height: 100px;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="45" fill="red"/><circle cx="50" cy="50" r="35" fill="white"/><circle cx="50" cy="50" r="25" fill="red"/><circle cx="50" cy="50" r="15" fill="yellow"/><circle cx="50" cy="50" r="5" fill="red"/></svg>') no-repeat center;
+    background-size: contain;
+    position: absolute;
+    right: 100px;
+    top: 30%;
+    cursor: crosshair;
+    transition: all 0.1s;
+}
+
+.arrow {
+    width: 60px;
+    height: 4px;
+    background: #8B4513;
+    position: absolute;
+    pointer-events: none;
+}
+
+.arrow::after {
+    content: '';
+    position: absolute;
+    right: -10px;
+    top: -3px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid #666;
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+}
+
+#game-over {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.3);
+    text-align: center;
+    z-index: 1000;
+}
+
+#game-over h2 {
+    margin: 0 0 20px 0;
+    color: #333;
+}
+
+#game-over p {
+    font-size: 24px;
+    margin: 20px 0;
+}
+
+#restart-btn {
+    padding: 15px 30px;
+    font-size: 18px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#restart-btn:hover {
+    background: #45a049;
+}
+
+.hidden {
+    display: none;
+}

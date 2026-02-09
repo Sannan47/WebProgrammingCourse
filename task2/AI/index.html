@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archery Game</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="game-container">
+        <!-- Header with game info -->
+        <div class="header">
+            <div class="score-display">
+                <span class="label">Score:</span>
+                <span id="score">0</span>
+            </div>
+            <div class="timer-display">
+                <span class="label">Time:</span>
+                <span id="timer">60</span>s
+            </div>
+            <div class="difficulty-display">
+                <span class="label">Level:</span>
+                <span id="level">1</span>
+            </div>
+        </div>
+
+        <!-- Game area -->
+        <div id="gameArea" class="game-area">
+            <!-- Bow (left side) -->
+            <div id="bow" class="bow">
+                <div class="bow-body"></div>
+                <div class="bow-string"></div>
+            </div>
+
+            <!-- Target (moving) -->
+            <div id="target" class="target">
+                <div class="target-ring ring-outer"></div>
+                <div class="target-ring ring-middle"></div>
+                <div class="target-ring ring-inner"></div>
+                <div class="target-ring ring-bullseye"></div>
+            </div>
+
+            <!-- Arrows container -->
+            <div id="arrowsContainer"></div>
+
+            <!-- Game Over overlay -->
+            <div id="gameOverlay" class="game-overlay hidden">
+                <div class="overlay-content">
+                    <h2 id="overlayTitle">Game Over!</h2>
+                    <p id="overlayMessage">Your final score: <span id="finalScore">0</span></p>
+                    <button id="restartBtn" class="btn">Play Again</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls -->
+        <div class="controls">
+            <button id="shootBtn" class="btn btn-shoot">Shoot Arrow (Space)</button>
+            <button id="startBtn" class="btn btn-start">Start Game</button>
+        </div>
+
+        <!-- Instructions -->
+        <div class="instructions">
+            <h3>How to Play:</h3>
+            <p>🎯 Click "Start Game" to begin</p>
+            <p>🏹 Press SPACE or click "Shoot Arrow" to fire</p>
+            <p>🎪 Hit the moving target to score points</p>
+            <p>⚡ Game gets harder as your score increases!</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
