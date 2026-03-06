@@ -11,6 +11,8 @@ mongoose.connect("mongodb://localhost:27017/studentDB")
     console.log(err);
 });
 
+const path = require("path");
+
 const app = express();
 
 app.use(express.json());
@@ -20,6 +22,12 @@ app.use(session({
     resave: false,
     saveUninitialized: true
 }));
+
+app.use(express.static(path.join(__dirname, "public")));
+
+app.get("/", (req, res) => {
+    res.redirect("/login.html");
+});
 
 app.post("/register", async (req, res) => {
 
@@ -56,26 +64,23 @@ function auth(req, res, next) {
     if (req.session.user) {
         next();
     } else {
-        res.send("Please login first");
+        res.redirect("/login.html");
     }
 
 }
 
 app.get("/dashboard", auth, (req, res) => {
-
-    res.send("Welcome " + req.session.user);
-
+    res.sendFile(path.join(__dirname, "public", "dashboard.html"));
 });
 
 app.get("/logout", (req, res) => {
 
     req.session.destroy(() => {
-        res.send("Logout successful");
+        res.redirect("/login.html");
     });
 
 });
 
-
 app.listen(3000, () => {
-    console.log("Server is running on port 3000");
+    console.log("Server is running on: http://localhost:3000");
 });
