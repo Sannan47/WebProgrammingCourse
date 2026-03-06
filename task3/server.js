@@ -21,7 +21,6 @@ app.use(session({
     saveUninitialized: true
 }));
 
-
 app.post("/register", async (req, res) => {
 
     console.log(req.body);
@@ -33,4 +32,21 @@ app.post("/register", async (req, res) => {
     const result = await user.register();
 
     res.send(result);
+});
+
+app.post("/login", async (req, res) => {
+
+    const { username, password } = req.body;
+
+    const user = new User(username, password);
+
+    const result = await user.login();
+
+    if (result) {
+        req.session.user = username;
+        res.send("Login successful");
+    } else {
+        res.send("Invalid username or password");
+    }
+
 });
