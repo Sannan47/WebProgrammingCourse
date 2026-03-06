@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Login System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="dashboard-box">
+            <h1>Dashboard</h1>
+            <div class="welcome-message">
+                <p id="welcomeText">Loading...</p>
+            </div>
+            <div class="dashboard-content">
+                <p>You are now logged in and can access this protected page.</p>
+            </div>
+            <a href="/logout" class="btn logout-btn">Logout</a>
+        </div>
+    </div>
+
+    <script>
+        // Fetch user data when page loads
+        window.addEventListener('DOMContentLoaded', async () => {
+            try {
+                const response = await fetch('/api/user');
+                const data = await response.json();
+
+                if (data.success) {
+                    document.getElementById('welcomeText').textContent = `Welcome ${data.username}`;
+                } else {
+                    // If session is invalid, redirect to login
+                    window.location.href = '/login.html';
+                }
+            } catch (error) {
+                console.error('Error fetching user data:', error);
+                window.location.href = '/login.html';
+            }
+        });
+    </script>
+</body>
+</html>
