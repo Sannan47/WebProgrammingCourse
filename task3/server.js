@@ -50,3 +50,32 @@ app.post("/login", async (req, res) => {
     }
 
 });
+
+function auth(req, res, next) {
+
+    if (req.session.user) {
+        next();
+    } else {
+        res.send("Please login first");
+    }
+
+}
+
+app.get("/dashboard", auth, (req, res) => {
+
+    res.send("Welcome " + req.session.user);
+
+});
+
+app.get("/logout", (req, res) => {
+
+    req.session.destroy(() => {
+        res.send("Logout successful");
+    });
+
+});
+
+
+app.listen(3000, () => {
+    console.log("Server is running on port 3000");
+});
