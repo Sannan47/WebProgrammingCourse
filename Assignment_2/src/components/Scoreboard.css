@@ -1,0 +1,164 @@
+.scoreboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  background: var(--scoreboard-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 16px 24px;
+  backdrop-filter: blur(12px);
+  min-width: 220px;
+}
+
+/* === Main Score === */
+.score-main {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.score-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.score-number {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3.6rem;
+  line-height: 1;
+  color: var(--white);
+  letter-spacing: 0.02em;
+}
+
+.score-number.score-flash {
+  animation: scoreFlash 0.5s ease;
+}
+
+.wickets-num.all-out {
+  color: var(--red);
+  text-shadow: 0 0 12px rgba(224, 48, 48, 0.7);
+}
+
+.score-sub-label {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.55rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-top: -4px;
+}
+
+.score-slash {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 3.2rem;
+  color: rgba(255,255,255,0.2);
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+/* === Over info === */
+.over-info {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.over-label-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.over-title {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+}
+
+.balls-left {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.04em;
+}
+
+.over-dots-row {
+  display: flex;
+  gap: 7px;
+}
+
+.over-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.25);
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.over-dot--done {
+  background: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 6px rgba(64,200,224,0.5);
+}
+
+.over-dot--current {
+  background: transparent;
+  border-color: var(--gold);
+  box-shadow: 0 0 8px var(--gold);
+  animation: glowPulse 1s ease infinite;
+}
+
+.over-dot--empty {
+  background: transparent;
+}
+
+/* === Style badge === */
+.style-badge {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.12em;
+  padding: 3px 14px;
+  border-radius: 20px;
+  border: 1px solid;
+  transition: all 0.25s ease;
+}
+
+.style-badge--aggressive {
+  color: var(--accent-orange);
+  border-color: var(--accent-orange);
+  background: rgba(224,112,48,0.12);
+  text-shadow: 0 0 8px rgba(224,112,48,0.5);
+}
+
+.style-badge--defensive {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+  background: rgba(64,200,224,0.1);
+  text-shadow: 0 0 8px rgba(64,200,224,0.4);
+}
+
+/* === Last outcome badge === */
+.last-outcome {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.4rem;
+  letter-spacing: 0.1em;
+  padding: 2px 20px;
+  border-radius: 6px;
+  animation: bounceIn 0.4s ease;
+}
+
+.outcome--wicket { background: var(--seg-wicket); color: #fff; }
+.outcome--0 { background: var(--seg-dot); color: rgba(255,255,255,0.8); }
+.outcome--1 { background: var(--seg-one); color: #fff; }
+.outcome--2 { background: var(--seg-two); color: #fff; }
+.outcome--3 { background: var(--seg-three); color: #fff; }
+.outcome--4 { background: var(--seg-four); color: #fff; }
+.outcome--6 { background: var(--seg-six); color: #111; }
