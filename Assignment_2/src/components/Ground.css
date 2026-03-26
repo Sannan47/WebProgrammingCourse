@@ -1,0 +1,377 @@
+.ground-wrapper {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Sky */
+.ground-sky {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #05081a 0%, #0b1530 40%, #0f2040 70%, #1a3a28 100%);
+}
+
+.star {
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+  opacity: 0.6;
+  animation: twinkle 2s ease-in-out infinite alternate;
+}
+
+@keyframes twinkle {
+  from { opacity: 0.3; transform: scale(1); }
+  to   { opacity: 0.9; transform: scale(1.3); }
+}
+
+/* Stadium lights */
+.stadium-lights {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+}
+
+.light-post {
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.left-post { left: 8%; }
+.right-post { right: 8%; }
+
+.light-head {
+  display: flex;
+  gap: 4px;
+  background: rgba(0,0,0,0.4);
+  padding: 3px 5px;
+  border-radius: 3px;
+}
+
+.light-bulb {
+  width: 7px;
+  height: 7px;
+  background: #fffdc0;
+  border-radius: 50%;
+  box-shadow: 0 0 10px 4px rgba(255,253,150,0.6);
+}
+
+.post-column {
+  width: 4px;
+  height: 40px;
+  background: linear-gradient(180deg, #888 0%, #444 100%);
+  border-radius: 0 0 2px 2px;
+}
+
+/* Outfield */
+.ground-outfield {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 110px;
+  background: linear-gradient(180deg, #1a4a1a 0%, #2d6a2d 40%, #3a8a3a 100%);
+  border-radius: 0 0 14px 14px;
+}
+
+/* Outfield mowing stripes */
+.ground-outfield::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0px,
+    transparent 22px,
+    rgba(0,0,0,0.08) 22px,
+    rgba(0,0,0,0.08) 44px
+  );
+}
+
+/* Pitch */
+.pitch-strip {
+  position: absolute;
+  bottom: 0;
+  left: 18%;
+  right: 18%;
+  height: 100%;
+  background: linear-gradient(180deg, #c8a060 0%, #d4b070 60%, #c0952a 100%);
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.pitch-stripe {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: rgba(120,80,20,0.2);
+}
+
+/* Crease lines */
+.crease {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(255,255,255,0.85);
+}
+
+.batting-crease  { left: 15%; }
+.bowling-crease  { right: 15%; }
+
+/* ===== FIGURES ===== */
+.bowler-figure,
+.batsman-figure {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bowler-figure  { right: 8%; }
+.batsman-figure { left: 26%; }
+
+/* Heads */
+.figure-head {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.15);
+}
+
+.bowler-head  { background: #f5c890; }
+.batsman-head { background: #f5c890; }
+
+/* Bodies */
+.figure-body {
+  width: 12px;
+  height: 28px;
+  border-radius: 4px;
+  margin-top: -2px;
+}
+
+.bowler-body  { background: #2255aa; }
+.batsman-body { background: #fff; }
+
+/* Arms */
+.figure-arm {
+  position: absolute;
+  width: 8px;
+  height: 20px;
+  border-radius: 4px;
+  transform-origin: top center;
+  top: 14px;
+}
+
+.bowler-arm {
+  right: -10px;
+  background: #2255aa;
+  transform: rotate(30deg);
+  transition: transform 0.3s ease;
+}
+
+.bowler-arm.bowling-action {
+  animation: bowlAction 0.8s ease forwards;
+}
+
+@keyframes bowlAction {
+  0%   { transform: rotate(-120deg); }
+  50%  { transform: rotate(20deg); }
+  100% { transform: rotate(30deg); }
+}
+
+.bat-arm {
+  right: -14px;
+  background: #f5c890;
+  transform: rotate(20deg);
+  transition: transform 0.25s ease;
+}
+
+.bat-arm.swing-up {
+  animation: batSwingAnim 0.45s ease forwards;
+}
+
+@keyframes batSwingAnim {
+  0%   { transform: rotate(20deg); }
+  40%  { transform: rotate(120deg); }
+  70%  { transform: rotate(-30deg); }
+  100% { transform: rotate(20deg); }
+}
+
+.bat-shape {
+  position: absolute;
+  bottom: -12px;
+  left: -4px;
+  width: 10px;
+  height: 22px;
+  background: #c8960a;
+  border-radius: 2px 2px 4px 4px;
+  box-shadow: 0 0 6px rgba(200,150,10,0.5);
+}
+
+/* Legs */
+.figure-legs {
+  display: flex;
+  gap: 4px;
+  margin-top: -1px;
+}
+
+.leg {
+  width: 5px;
+  height: 20px;
+  border-radius: 2px;
+  transition: transform 0.2s ease;
+}
+
+.bowler-leg-l, .bowler-leg-r { background: #2255aa; }
+.batsman-leg-l, .batsman-leg-r { background: #ddd; }
+
+.batsman-leg-l.step-forward {
+  transform: rotate(-15deg) translateX(-3px);
+}
+
+/* ===== WICKETS ===== */
+.wickets-set {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  align-items: flex-end;
+  gap: 5px;
+  transition: transform 0.4s ease;
+}
+
+.batsman-wickets  { left: 22%; }
+.bowler-wickets   { right: 22%; }
+
+.stump {
+  width: 4px;
+  height: 30px;
+  background: linear-gradient(180deg, #e8e0c0 0%, #c8b880 100%);
+  border-radius: 0 0 2px 2px;
+}
+
+.bail {
+  position: absolute;
+  top: -4px;
+  width: 10px;
+  height: 3px;
+  background: #e8d890;
+  border-radius: 1px;
+}
+.bail-left  { left: 0; }
+.bail-right { left: 9px; }
+
+.wickets-set.fallen {
+  transform: translateX(-25px) rotate(-40deg);
+}
+
+/* ===== BALL ===== */
+.cricket-ball {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: radial-gradient(circle at 35% 35%, #ff5050, #c01010);
+  border-radius: 50%;
+  bottom: 50px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.6), inset 0 0 4px rgba(255,100,100,0.4);
+  pointer-events: none;
+  will-change: transform, left;
+  z-index: 10;
+}
+
+.ball-seam {
+  position: absolute;
+  top: 3px;
+  left: 2px;
+  width: 14px;
+  height: 12px;
+  border: 1.5px solid rgba(255,255,255,0.25);
+  border-radius: 50%;
+  border-top-color: transparent;
+  border-left-color: transparent;
+  transform: rotate(-30deg);
+}
+
+/* Ball animation phases */
+.ball-phase-reset {
+  right: 12%;
+  transition: none;
+  opacity: 0;
+}
+
+.ball-phase-travel {
+  right: 72%;
+  transition: right 0.8s cubic-bezier(0.25, 0.1, 0.35, 1), bottom 0.8s cubic-bezier(0.3, 0, 0.5, 1.2);
+  opacity: 1;
+  bottom: 55px;
+}
+
+.ball-phase-hit {
+  right: 72%;
+  opacity: 1;
+  transition: none;
+}
+
+.ball-phase-fly {
+  right: 72%;
+  transition: transform 0.55s cubic-bezier(0.2, 0.8, 0.4, 1), opacity 0.55s ease;
+  transform: translate(var(--fly-x, 100px), var(--fly-y, -60px));
+  opacity: 0;
+}
+
+/* Impact flash */
+.impact-flash {
+  position: absolute;
+  left: 28%;
+  bottom: 45px;
+  font-size: 2.2rem;
+  pointer-events: none;
+  animation: impactBurst 0.4s ease forwards;
+  z-index: 20;
+}
+
+@keyframes impactBurst {
+  0%   { transform: scale(0.5) rotate(-20deg); opacity: 1; }
+  60%  { transform: scale(1.4) rotate(10deg); opacity: 1; }
+  100% { transform: scale(1.8) rotate(30deg); opacity: 0; }
+}
+
+.impact-boundary { filter: drop-shadow(0 0 8px #f1c40f); }
+.impact-wicket   { filter: drop-shadow(0 0 8px #c0392b); }
+.impact-normal   { filter: drop-shadow(0 0 6px rgba(255,255,255,0.6)); }
+
+/* Boundary text */
+.boundary-text {
+  position: absolute;
+  right: 5%;
+  bottom: 30%;
+  font-family: 'Bebas Neue', sans-serif;
+  letter-spacing: 0.06em;
+  pointer-events: none;
+  animation: bounceIn 0.4s ease, fadeOut 0.4s ease 1.2s forwards;
+}
+
+.four-text {
+  font-size: 2rem;
+  color: var(--accent-orange);
+  text-shadow: 0 0 20px var(--accent-orange);
+}
+
+.six-text {
+  font-size: 2.6rem;
+  color: var(--gold);
+  text-shadow: 0 0 24px var(--gold);
+}
+
+@keyframes fadeOut {
+  to { opacity: 0; }
+}
