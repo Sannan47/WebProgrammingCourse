@@ -1,0 +1,139 @@
+.controls-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+/* === Style selector === */
+.style-selector {
+  display: flex;
+  gap: 10px;
+}
+
+.style-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: 12px;
+  border: 2px solid transparent;
+  background: var(--glass);
+  color: rgba(255,255,255,0.5);
+  gap: 2px;
+  transition: all 0.2s ease;
+}
+
+.style-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+}
+
+.style-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btn-icon {
+  font-size: 1.4rem;
+  line-height: 1;
+}
+
+.btn-text {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+}
+
+.btn-sub {
+  font-family: 'Orbitron', monospace;
+  font-size: 0.52rem;
+  letter-spacing: 0.1em;
+  opacity: 0.7;
+}
+
+/* Aggressive active */
+.aggressive-btn.active {
+  border-color: var(--accent-orange);
+  background: rgba(224,112,48,0.15);
+  color: var(--accent-orange);
+  box-shadow: 0 0 18px rgba(224,112,48,0.25), inset 0 0 8px rgba(224,112,48,0.1);
+}
+
+/* Defensive active */
+.defensive-btn.active {
+  border-color: var(--accent-cyan);
+  background: rgba(64,200,224,0.12);
+  color: var(--accent-cyan);
+  box-shadow: 0 0 18px rgba(64,200,224,0.2), inset 0 0 8px rgba(64,200,224,0.08);
+}
+
+/* === Action buttons === */
+.action-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+/* Play Shot */
+.play-shot-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 20px;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  background: linear-gradient(135deg, #c09020, #f0c040);
+  color: #111;
+  box-shadow: 0 4px 20px rgba(240,192,64,0.3);
+  transition: all 0.2s ease;
+}
+
+.play-shot-btn.ready:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 26px rgba(240,192,64,0.5);
+  background: linear-gradient(135deg, #d0a030, #ffd050);
+}
+
+.play-shot-btn.busy {
+  background: linear-gradient(135deg, #444, #555);
+  color: rgba(255,255,255,0.5);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.play-icon {
+  font-size: 1.3rem;
+}
+
+.play-icon.spin {
+  display: inline-block;
+  animation: spinBall 0.5s linear infinite;
+}
+
+@keyframes spinBall {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Restart */
+.restart-btn {
+  padding: 14px 18px;
+  border-radius: 12px;
+  background: var(--glass);
+  border: 1px solid var(--glass-border);
+  color: rgba(255,255,255,0.55);
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  transition: all 0.2s ease;
+}
+
+.restart-btn:hover {
+  background: rgba(255,255,255,0.1);
+  color: rgba(255,255,255,0.85);
+  border-color: rgba(255,255,255,0.25);
+  transform: translateY(-2px);
+}
