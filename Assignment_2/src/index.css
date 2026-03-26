@@ -1,0 +1,102 @@
+/* === Global Reset & Cricket Theme === */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --pitch-green: #2d6a2d;
+  --pitch-light: #3d8a3d;
+  --outfield: #1a4a1a;
+  --sky-top: #0a0e1a;
+  --sky-mid: #0d1f3c;
+  --sky-bot: #1a2f4a;
+  --gold: #f0c040;
+  --gold-dim: #c09020;
+  --red: #e03030;
+  --white: #f0f0f0;
+  --cream: #f5e8c0;
+  --accent-cyan: #40c8e0;
+  --accent-orange: #e07030;
+  --scoreboard-bg: rgba(5, 10, 25, 0.92);
+  --glass: rgba(255, 255, 255, 0.06);
+  --glass-border: rgba(255, 255, 255, 0.12);
+
+  /* Power bar segment colors */
+  --seg-wicket: #c0392b;
+  --seg-dot: #555e6b;
+  --seg-one: #3498db;
+  --seg-two: #27ae60;
+  --seg-three: #8e44ad;
+  --seg-four: #e67e22;
+  --seg-six: #f1c40f;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  font-family: 'Rajdhani', sans-serif;
+  background: var(--sky-top);
+  color: var(--white);
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+button {
+  cursor: pointer;
+  font-family: 'Rajdhani', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  border: none;
+  outline: none;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, background 0.15s ease;
+}
+
+button:active {
+  transform: scale(0.96) !important;
+}
+
+/* Glow pulse animation */
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 8px 2px rgba(240,192,64,0.4); }
+  50% { box-shadow: 0 0 18px 6px rgba(240,192,64,0.8); }
+}
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bounceIn {
+  0% { transform: scale(0.5); opacity: 0; }
+  60% { transform: scale(1.1); opacity: 1; }
+  80% { transform: scale(0.95); }
+  100% { transform: scale(1); }
+}
+
+@keyframes scoreFlash {
+  0%   { color: var(--gold); transform: scale(1.4); }
+  100% { color: var(--white); transform: scale(1); }
+}
+
+@keyframes commentarySlide {
+  0%   { opacity: 0; transform: translateX(-30px); }
+  15%  { opacity: 1; transform: translateX(0); }
+  80%  { opacity: 1; transform: translateX(0); }
+  100% { opacity: 0; transform: translateX(30px); }
+}
+
+@keyframes starburstSpin {
+  from { transform: rotate(0deg) scale(1); }
+  to   { transform: rotate(360deg) scale(1.2); }
+}
+
+@keyframes gameOverDrop {
+  from { opacity: 0; transform: translateY(-60px) scale(0.8); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
