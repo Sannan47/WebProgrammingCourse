@@ -1,0 +1,45 @@
+.commentary-placeholder {
+  height: 42px;
+}
+
+.commentary-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  border-radius: 10px;
+  border-left: 3px solid;
+  background: rgba(0,0,0,0.4);
+  backdrop-filter: blur(8px);
+  animation: commentarySlide 3.2s ease forwards;
+  height: 42px;
+}
+
+.commentary-box.good {
+  border-left-color: var(--gold);
+  background: rgba(240,192,64,0.08);
+}
+
+.commentary-box.bad {
+  border-left-color: var(--red);
+  background: rgba(200,50,50,0.1);
+}
+
+.commentary-box.neutral {
+  border-left-color: var(--accent-cyan);
+  background: rgba(64,200,224,0.06);
+}
+
+.commentary-mic {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.commentary-text {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.85);
+  letter-spacing: 0.02em;
+  font-style: italic;
+}
