@@ -2,24 +2,40 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const bcrypt = require("bcryptjs");
+const dotenv = require("dotenv");
+
+dotenv.config({ path: ".env.local" });
 
 const User = require("./models/User");
 
 const app = express();
 
+const session = require("express-session");
+
+app.use(session({
+  secret: "secret-key",
+  resave: false,
+  saveUninitialized: false,
+  cookie: {
+    secure: false, 
+    httpOnly: true
+  }
+}));
+
 app.use(cors({
-  origin: "http://localhost:5173"
+  origin: "http://localhost:5173",
+  credentials: true
 }));
 
 app.use(express.json());
 
 // MongoDB connection
-mongoose.connect("mongodb://127.0.0.1:27017/authDB")
+const mongodbUri = process.env.MONGODB_URI; // "mongodb://127.0.0.1:27017/authDB";
+mongoose.connect(mongodbUri)
   .then(() => console.log("MongoDB connected"))
   .catch(err => console.log(err));
 
 
-// SIGNUP
 app.post("/signup", async (req, res) => {
   const { email, password } = req.body;
 
@@ -45,7 +61,6 @@ app.post("/signup", async (req, res) => {
 });
 
 
-// LOGIN
 app.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
@@ -61,10 +76,29 @@ app.post("/login", async (req, res) => {
     return res.json({ message: "Wrong password" });
   }
 
+  req.session.user = {
+    email: user.email
+  };
+
   res.json({ message: "Login successful" });
 });
 
 
-app.listen(5000, () => {
-  console.log("Server running on port 5000");
+app.get("/me", (req, res) => {
+  if (req.session.user) {
+    return res.json({ user: req.session.user });
+  } else {
+    return res.status(401).json({ message: "Not logged in" });
+  }
+});
+
+
+app.post("/logout", (req, res) => {
+  req.session.destroy();
+  res.json({ message: "Logged out" });
+});
+
+const PORT = process.env.PORT;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
